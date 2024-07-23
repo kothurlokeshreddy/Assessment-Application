@@ -25,10 +25,8 @@ External API:
 
 The login functionality uses an external API at https://apis.ccbp.in/login. This API is not included in this project and needs to be integrated separately as per their documentation.
 
-The Login Credentials to navigate to other pages :-
-    ###
-    username : rahul
-    ###
+The Login Credentials to navigate to other pages :-\
+    username : rahul\
     password : rahul@2021
 
 Running the Application:
