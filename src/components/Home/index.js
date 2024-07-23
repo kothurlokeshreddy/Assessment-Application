@@ -26,7 +26,7 @@ const Home = () => {
           <p className="home-description">
           Welcome to your go-to platform for comprehensive assessment tasks. Whether you're a student, professional, or lifelong learner, our well-structured tasks are designed to help you master your skills and achieve your goals.
           </p>
-          <Link to="/products">
+          <Link to="/assessment">
             <button type="button" className="shop-now-button">
               Go To Assessment Tasks
             </button>
