@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+Project Name: React Assessment App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application with a Node.js backend that handles API requests for assessment tasks.
 
-## Available Scripts
+Frontend (React Application)
 
-In the project directory, you can run:
+The React application consists of several components:
 
-### `npm start`
+App.js: The main application component that sets up routing using BrowserRouter and Switch. It defines protected routes using the ProtectedRoute component.
+components/AssessmentTasks.js: This component allows users to create new assessment tasks. It uses the useForm hook from react-hook-form for form validation and useState hook to manage the list of tasks. Data is submitted to the Node.js server using fetch API.
+components/Header.js: This component renders the header section of the application, including website logo, navigation links, and a logout button. It utilizes icons from react-icons library.
+components/Home.js: This component displays the home page content, including a welcome message, description, and a button to navigate to assessment tasks. It checks for a JWT token in cookies and redirects to the login page if not found.
+components/LoginForm.js: This component handles user login functionality. It allows users to enter their username and password and submits data to the external API (https://apis.ccbp.in/login). Upon successful login, it stores the JWT token in cookies and redirects to the home page.
+components/NotFound.js: This component renders a "Not Found" page when a user tries to access a non-existent route.
+components/ProtectedRoute.js: This component is a custom route wrapper that checks for the presence of a JWT token in cookies. If the token is not found, it redirects the user to the login page.
+Backend (Node.js Server)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The Node.js server is built with Express.js and handles API requests related to assessment tasks.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Server.js: This file defines the server logic. It sets up the port and middleware for parsing JSON bodies. It uses an in-memory array to store tasks.
+API Endpoints:
+GET /assessment: This endpoint retrieves all assessment tasks from the in-memory array and sends them back as a JSON response.
+POST /assessment: This endpoint allows creating a new assessment task. It receives a JSON body with Name, taskType, and status properties. It validates the required fields and adds the new task to the in-memory array. Upon successful creation, it sends a success message with the newly created task details.
+External API:
 
-### `npm test`
+The login functionality uses an external API at https://apis.ccbp.in/login. This API is not included in this project and needs to be integrated separately as per their documentation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Running the Application:
 
-### `npm run build`
+Clone the project repository.
+Install dependencies: npm install
+Start the server: npm start
+Access the application in your browser at http://localhost:3000
+Note:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is a basic example and can be extended to include features like user authentication with the external API, storing tasks in a database instead of in-memory, adding functionalities to edit or delete tasks, etc.
